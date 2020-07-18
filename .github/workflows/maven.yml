@@ -28,8 +28,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ GITHUB_SHA }}
-        release_name: Release ${ GITHUB_SHA::8 }
+        tag_name: ${ GITHUB_SHA }
+        release_name: Release ${{ GITHUB_SHA::8 }}
         body: ${{ github.head_commit.url }}
         draft: false
         prerelease: false
