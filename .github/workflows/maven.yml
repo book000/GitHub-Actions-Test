@@ -22,14 +22,17 @@ jobs:
         java-version: 1.8
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: Set SHORT_SHA
+      id: vars
+      run: echo "::set-output name=SHORT_SHA::$(git rev-parse --short HEAD)"
     - name: Create a Release
       id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.sha }}
-        release_name: Release ${ GITHUB_SHA::8 }
+        tag_name: ${{ steps.vars.outputs.SHORT_SHA }}
+        release_name: Release ${{ steps.vars.outputs.SHORT_SHA }}
         body: ${{ github.head_commit.url }}
         draft: false
         prerelease: false
