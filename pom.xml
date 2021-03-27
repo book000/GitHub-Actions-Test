@@ -3,10 +3,25 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.tomacheese</groupId>
-	<artifactId>githubactionstest</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>githubActionsTest</artifactId>
+	<version>${revision}</version>
+
+    <properties>
+        <revision>1.0.0</revision>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+    </properties>
+
 	<build>
 		<plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
@@ -56,7 +71,7 @@
 	<distributionManagement>
 		<repository>
 			<id>github</id>
-			<name>GitHub Apache Maven Packages</name>
+			<name>GitHub book000 Apache Maven Packages</name>
 			<url>https://maven.pkg.github.com/book000/GitHubActionsTest</url>
 		</repository>
 	</distributionManagement>

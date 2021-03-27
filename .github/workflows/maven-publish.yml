@@ -35,6 +35,6 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn -B -s $GITHUB_WORKSPACE/deploy_settings.xml deploy
+      run: mvn -B -s $GITHUB_WORKSPACE/deploy_settings.xml clean deploy --batch-mode --no-transfer-progress -Drevision=${{ github.event.release.tag_name }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
