@@ -34,7 +34,11 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
+    - name: Set SHORT_SHA
+      id: vars
+      run: echo "::set-output name=SHORT_SHA::$(git rev-parse --short HEAD)"
+
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn -B -s $GITHUB_WORKSPACE/deploy_settings.xml clean deploy --batch-mode --no-transfer-progress -Drevision=${{ github.event.release.tag_name }}
+      run: mvn -B -s $GITHUB_WORKSPACE/deploy_settings.xml clean deploy --batch-mode --no-transfer-progress -Drevision=${{ steps.vars.outputs.SHORT_SHA }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
