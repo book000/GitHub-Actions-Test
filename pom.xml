@@ -71,7 +71,7 @@
 		<repository>
 			<id>github</id>
 			<name>GitHub book000 Apache Maven Packages</name>
-			<url>https://maven.pkg.github.com/book000/GitHubActionsTest</url>
+			<url>https://maven.pkg.github.com/book000/GitHub-Actions-Test</url>
 		</repository>
 	</distributionManagement>
 </project>
