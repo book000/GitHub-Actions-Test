@@ -1,4 +1,4 @@
-package com.tomacheese.GitHubActionsTest;
+package com.tomacheese.githubactionstest;
 
 public class Main {
 	public static void main(String[] args) {
